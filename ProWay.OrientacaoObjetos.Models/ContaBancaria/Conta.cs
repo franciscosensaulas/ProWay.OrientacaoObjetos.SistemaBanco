@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProWay.OrientacaoObjetos.Models.ContaBancaria
 {
-    public class ContaCorrente : Conta
+    public class Conta
     {
+        public string Nome { get; set; }
+        public double Saldo { get; set; }
+        public string Codigo { get; set; }
     }
 }

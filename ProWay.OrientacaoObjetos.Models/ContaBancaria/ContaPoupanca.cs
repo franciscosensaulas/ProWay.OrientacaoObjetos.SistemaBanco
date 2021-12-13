@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProWay.OrientacaoObjetos.Models.ContaBancaria
 {
-    public class ContaCorrente : Conta
+    public class ContaPoupanca : Conta
     {
     }
 }

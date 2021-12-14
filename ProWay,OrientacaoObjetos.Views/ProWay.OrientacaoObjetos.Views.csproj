@@ -3,14 +3,18 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>ProWay_OrientacaoObjetos.Views</RootNamespace>
+    <RootNamespace>ProWay.OrientacaoObjetos.Views</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contas\" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProWay.OrientacaoObjetos.Models\ProWay.OrientacaoObjetos.Models.csproj" />
   </ItemGroup>
 
 </Project>

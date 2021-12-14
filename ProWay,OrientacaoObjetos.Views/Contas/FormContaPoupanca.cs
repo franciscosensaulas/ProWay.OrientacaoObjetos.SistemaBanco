@@ -80,5 +80,27 @@ namespace ProWay.OrientacaoObjetos.Views.Contas
             }
             
         }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            int quantidadeLinhasSelecionadas = dataGridView.SelectedRows.Count;
+
+            if(quantidadeLinhasSelecionadas <= 0)
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            int codigo = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0]);
+
+            SqlConnection sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\moc\source\repos\ProWay.OrientacaoObjetos.SistemaBanco\ProWay,OrientacaoObjetos.Views\BancoDados\Database.mdf;Integrated Security=True";
+            sqlConnection.Open();
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandText = "SELECT * FROM ContasPoupanca WHERE codigo = @CODIGO";
+            sqlCommand.Parameters.AddWithValue("@CODIGO", codigo);
+
+        }
     }
 }

@@ -5,9 +5,11 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProWay.OrientacaoObjetos.Models", "ProWay.OrientacaoObjetos.Models\ProWay.OrientacaoObjetos.Models.csproj", "{733F6784-1DC7-4E00-9B49-4F05D6E45D6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProWay.OrientacaoObjetos.Services", "ProWay.OrientacaoObjetos.Services\ProWay.OrientacaoObjetos.Services.csproj", "{642663BE-9721-483B-96A2-9C2F3D7F5C58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProWay.OrientacaoObjetos.Services", "ProWay.OrientacaoObjetos.Services\ProWay.OrientacaoObjetos.Services.csproj", "{642663BE-9721-483B-96A2-9C2F3D7F5C58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProWay.OrientacaoObjetos.Views", "ProWay,OrientacaoObjetos.Views\ProWay.OrientacaoObjetos.Views.csproj", "{E6CF45E3-177E-46FB-8254-53D2ECF3B9A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProWay.OrientacaoObjetos.Views", "ProWay,OrientacaoObjetos.Views\ProWay.OrientacaoObjetos.Views.csproj", "{E6CF45E3-177E-46FB-8254-53D2ECF3B9A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProWay.OrientacaoObjetos.ExemploHeranca", "ProWay.OrientacaoObjetos.ExemploHeranca\ProWay.OrientacaoObjetos.ExemploHeranca.csproj", "{F4885E09-57F6-4634-A6CA-970B31B3866A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E6CF45E3-177E-46FB-8254-53D2ECF3B9A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6CF45E3-177E-46FB-8254-53D2ECF3B9A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6CF45E3-177E-46FB-8254-53D2ECF3B9A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4885E09-57F6-4634-A6CA-970B31B3866A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4885E09-57F6-4634-A6CA-970B31B3866A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4885E09-57F6-4634-A6CA-970B31B3866A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4885E09-57F6-4634-A6CA-970B31B3866A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

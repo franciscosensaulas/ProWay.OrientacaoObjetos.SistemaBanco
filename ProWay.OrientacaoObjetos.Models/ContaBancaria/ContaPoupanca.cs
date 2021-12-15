@@ -8,6 +8,8 @@ namespace ProWay.OrientacaoObjetos.Models.ContaBancaria
 {
     public class ContaPoupanca : Conta
     {
+        public readonly string DescricaoConta;
+
         // Construtor é uma forma de garantir que o objeto
         // é construído da forma correta, ou seja, neste
         // cenário para abrir uma conta poupança é obrigatório
@@ -17,6 +19,12 @@ namespace ProWay.OrientacaoObjetos.Models.ContaBancaria
         {
             Nome = nome;
             Saldo = saldo;
+            DescricaoConta = "Meu texto";
+        }
+
+        public override void Depositar(double valorDeposito)
+        {
+            Saldo +=  valorDeposito * 1.05;
         }
     }
 }

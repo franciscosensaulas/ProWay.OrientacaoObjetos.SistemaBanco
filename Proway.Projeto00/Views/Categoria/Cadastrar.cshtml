@@ -1,0 +1,11 @@
+﻿@model CategoriaCadastrarViewModel
+
+@{
+    ViewBag.CorBotaoSalvar = "btn-success";
+}
+
+<form asp-controller="Categoria" asp-action="Cadastrar" method="POST">
+
+    <partial name="Form" model="Model"/>
+
+</form>

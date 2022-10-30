@@ -1,0 +1,34 @@
+﻿@model LivroEditarViewModel;
+
+<form asp-action="Editar" method="POST">
+    <div class="form-group">
+        <label asp-for="Titulo" class="form-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Preco" class="form-label"></label>
+        <input asp-for="Preco" class="form-control" />
+        <span asp-validation-for="Preco" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="QuantidadePaginas" class="form-label"></label>
+        <input asp-for="QuantidadePaginas" class="form-control" />
+        <span asp-validation-for="QuantidadePaginas" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="CategoriaId" class="form-label"></label>
+        <select asp-for="CategoriaId" class="form-select">
+            @foreach (var categoria in ((List<CategoriaIndexViewModel>)ViewBag.Categorias))
+            {
+                @if(categoria.Id == Model.CategoriaId){
+                    <option value="@categoria.Id.ToString()" selected="selected">@categoria.Nome</option>
+                }else{
+                    <option value="@categoria.Id.ToString()">@categoria.Nome</option>
+                }
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>

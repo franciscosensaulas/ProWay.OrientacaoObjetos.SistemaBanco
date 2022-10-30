@@ -1,0 +1,39 @@
+﻿@model List<LivroIndexViewModel>
+
+<div class="row">
+    <div class="col-12 mb-3">
+        <a asp-action="Cadastrar"
+           class="btn btn-primary float-end">
+            <i class="fa-solid fa-plus"></i> Cadastrar
+        </a>
+    </div>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Título</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var livro in Model)
+        {
+            <tr>
+                <td>@livro.Id</td>
+                <td>@livro.Titulo</td>
+                <td>@livro.Categoria</td>
+                <td>@livro.Preco</td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@livro.Id"
+                   class="btn btn-outline-warning">Editar</a>
+                    <a asp-action="Apagar" asp-route-id="@livro.Id"
+                   class="btn btn-outline-danger">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

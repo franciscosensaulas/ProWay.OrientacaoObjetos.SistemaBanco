@@ -1,0 +1,13 @@
+﻿@model CategoriaEditarViewModel
+
+@{
+    ViewBag.CorBotaoSalvar = "btn-warning";
+}
+
+<form asp-controller="Categoria" asp-action="Editar" method="post">
+
+    <input type="hidden" asp-for="@Model.Id" />
+
+    <partial name="Form" model="Model" />
+
+</form>

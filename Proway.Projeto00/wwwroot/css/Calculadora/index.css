@@ -1,0 +1,30 @@
+﻿/*#div-campo-numero1, #div-campo-numero2, #div-campo-mesma-pagina, #div-campo-outra-pagina {*/
+/* 
+    # representa id da tag
+    . representa classe que pode ser utilizado em várias tags
+*/
+
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+@font-face {
+    font-family: "Ninja Naruto";
+    src: URL("/fonts/njnaruto.ttf") format('truetype');
+}
+
+body {
+    font-family: 'Arial' !important;
+    color: white;
+    background-image: url("/images/wallpaper.webp");
+    background-position: right;
+}
+
+.botao-enviar {
+    width: 100px;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 30px;
+    font-family: "Ninja Naruto";
+    background-color: #f2a30b;
+    color: white;
+}

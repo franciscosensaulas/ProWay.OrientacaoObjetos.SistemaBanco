@@ -1,0 +1,51 @@
+﻿@using Proway.Projeto00.Enums
+@{
+    var numero1 = ViewBag.Numero1 == null ? "" : ViewBag.Numero1;
+    var numero2 = ViewBag.Numero2 == null ? "" : ViewBag.Numero2;
+}
+
+<h1>Olá mundo</h1>
+
+<!-- CSS Inline -->
+<span style="color: red">Sua calculadora</span>
+
+@if (ViewBag.ResultadoSoma != null)
+{
+    <span>O resultado da soma é: @ViewBag.ResultadoSoma</span>
+}
+
+@*<form action="/calculadora/calcular" method="POST">*@
+<form asp-controller="Calculadora" asp-action="Calcular" method="POST">
+    <div id="div-campo-numero1" class="margin-bottom-10">
+        <label for="campo-numero1">Número 01</label>
+        <input type="number" id="campo-numero1" name="numero1" value="@numero1" />
+    </div>
+
+    <div id="div-campo-numero2" class="margin-bottom-10">
+        <label for="campo-numero2">Número 02</label>
+        <input type="number" id="campo-numero2" name="numero2" value="@numero2" />
+    </div>
+
+    <div>
+        <span>Redirecionar para:</span>
+    </div>
+
+    <div id="div-campo-mesma-pagina" class="margin-bottom-10">
+        <input type="radio" id="campo-mesma-pagina" name="pagina" 
+            value="@((int)PaginaDirecionamento.Mesma)"
+            checked="checked" />
+        <label for="campo-mesma-pagina">Mesma Página</label>
+    </div>
+
+    <div id="div-campo-outra-pagina" class="margin-bottom-10">
+        <input type="radio" id="campo-outra-pagina" name="pagina"
+               value="@((int)PaginaDirecionamento.Outra)" />
+        <label for="campo-outra-pagina">Outra Página</label>
+    </div>
+
+    <button type="submit" class="botao-enviar">Enviar</button>
+</form>
+
+@section StyleSheet{
+    <link rel="stylesheet" href="~/css/Calculadora/index.css" />
+}

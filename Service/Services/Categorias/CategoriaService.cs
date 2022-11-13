@@ -1,5 +1,6 @@
 ﻿using Repository.Entities;
 using Repository.Repositories.Categorias;
+using Service.Exceptions;
 using Service.ViewModels.Categorias;
 
 namespace Service.Services.Categorias
@@ -28,6 +29,9 @@ namespace Service.Services.Categorias
         public void Apagar(int id)
         {
             var categoria = _categoriaRepository.GetById(id);
+
+            if (categoria == null)
+                    throw new NotFoundException("categoria", id);
 
             _categoriaRepository.Remove(categoria);
         }

@@ -1,4 +1,5 @@
 ﻿using Repository.Entities;
+using Repository.Repositories.Categorias;
 using Repository.Repositories.Livros;
 using Service.Exceptions;
 using Service.ViewModels.Livros;
@@ -8,10 +9,12 @@ namespace Service.Services.Livros
     public class LivroService : ILivroService
     {
         private readonly ILivroRepository _livroRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
 
-        public LivroService(ILivroRepository livroRepository)
+        public LivroService(ILivroRepository livroRepository, ICategoriaRepository categoriaRepository)
         {
             _livroRepository = livroRepository;
+            _categoriaRepository = categoriaRepository;
         }
 
         public LivroIndexViewModel Cadastrar(LivroCadastrarViewModel viewModel)
@@ -64,6 +67,13 @@ namespace Service.Services.Livros
 
             if (livro == null)
                 throw new NotFoundException(nameof(Livro), viewModel.Id);
+
+            var categoria = _categoriaRepository.GetById(
+                viewModel.CategoriaId.GetValueOrDefault());
+
+            if (categoria == null) 
+                throw new NotFoundException(nameof(Categoria), viewModel.CategoriaId
+                    .GetValueOrDefault());
 
             livro.Titulo = viewModel.Titulo;
             livro.Preco = viewModel.Preco.GetValueOrDefault();

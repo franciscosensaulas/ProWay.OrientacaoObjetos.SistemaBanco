@@ -61,7 +61,7 @@ namespace Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} created successfully.
+        ///   Looks up a localized string similar to {0} Created sucessfully.
         /// </summary>
         public static string EntityCreated {
             get {
@@ -70,7 +70,7 @@ namespace Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} not found with id {1}.
+        ///   Looks up a localized string similar to {0} not found with {1}.
         /// </summary>
         public static string EntityNotFound {
             get {
@@ -79,7 +79,7 @@ namespace Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} removed successfully.
+        ///   Looks up a localized string similar to {0} Removed successfully.
         /// </summary>
         public static string EntityRemoved {
             get {
@@ -88,7 +88,7 @@ namespace Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} updated successfully.
+        ///   Looks up a localized string similar to {0} Updated sucessfully.
         /// </summary>
         public static string EntityUpdated {
             get {

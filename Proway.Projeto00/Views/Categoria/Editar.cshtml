@@ -4,10 +4,10 @@
     ViewBag.CorBotaoSalvar = "btn-warning";
 }
 
-<form asp-controller="Categoria" asp-action="Editar" method="post">
+<form asp-controller="Categoria" asp-action="Editar" method="POST">
 
     <input type="hidden" asp-for="@Model.Id" />
 
-    <partial name="Form" model="Model" />
+    <partial name="Form" model="Model"></partial>
 
 </form>

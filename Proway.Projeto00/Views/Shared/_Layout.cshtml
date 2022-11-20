@@ -22,20 +22,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Categoria"
-                               asp-action="ObterTodos">Categorias</a>
+                            <a class="nav-link text-black dark" asp-controller="Colaborador" asp-action="Index">Colaborador</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Colaborador"
-                               asp-action="Index">Colaborador</a>
+                            <a class="nav-link text-black dark" asp-controller="Calculadora" asp-action="Index">Calculadora</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Calculadora"
-                               asp-action="Index">Calculadora</a>
+                            <a class="nav-link text-black dark" asp-controller="Categoria" asp-action="ObterTodos">Categorias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Livro"
-                               asp-action="Index">Livro</a>
+                            <a class="nav-link text-black dark" asp-controller="Livros" asp-action="Index">Livros</a>
                         </li>
                     </ul>
                 </div>
@@ -73,5 +69,6 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/FixDecimal.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

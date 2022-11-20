@@ -8,6 +8,7 @@ namespace Service.Exceptions
         public NotFoundException(string entity, int id)
             : base(Resource.EntityNotFound.Format(entity, id))
         {
+
         }
     }
 }

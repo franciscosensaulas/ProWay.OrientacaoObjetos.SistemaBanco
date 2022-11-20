@@ -1,17 +1,24 @@
-﻿using Service.ViewModels.Categorias;
+﻿using ProwayTests.Builders.Entities;
+using Repository.Entities;
+using Service.ViewModels.Categorias;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ProWayTests.Builders.ViewModels.Categorias
+namespace ProwayTests.Builders.ViewModels.Categorias
 {
     internal class CategoriaIndexViewModelBuilder
     {
-        private int _id;
+        private int _Id;
         private string _nome;
 
         public CategoriaIndexViewModel Construir()
         {
             return new CategoriaIndexViewModel
             {
-                Id = _id,
+                Id = _Id,
                 Nome = _nome,
             };
         }
@@ -19,14 +26,12 @@ namespace ProWayTests.Builders.ViewModels.Categorias
         public CategoriaIndexViewModelBuilder ComNome(string nome)
         {
             _nome = nome;
-
             return this;
         }
 
         public CategoriaIndexViewModelBuilder ComId(int id)
         {
-            _id = id;
-
+            _Id = id;
             return this;
         }
     }

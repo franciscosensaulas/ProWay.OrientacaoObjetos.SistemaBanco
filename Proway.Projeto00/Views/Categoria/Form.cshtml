@@ -1,14 +1,9 @@
 ﻿@model CategoriaViewModel
 
-@*@if(Model.GetType() == typeof(CategoriaEditarViewModel)){
-    var viewModel = (CategoriaEditarViewModel)Model;
-    <input type="hidden" asp-for="@viewModel.Id" />
-}*@
-
 <div class="mb-3">
     <label asp-for="Nome" class="form-label"></label>
     <input asp-for="Nome" class="form-control" />
     <span asp-validation-for="Nome" class="text-danger fw-bold"></span>
 </div>
 
-<button type="submit" class="btn @ViewBag.CorBotaoSalvar float-end">Salvar</button>
+<button type="submit" class="btn @ViewBag.CorBotaoSalvar float-end" >Salvar</button>

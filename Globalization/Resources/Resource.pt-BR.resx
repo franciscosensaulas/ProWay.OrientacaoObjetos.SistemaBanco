@@ -98,15 +98,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EntityCreated" xml:space="preserve">
-    <value>{0} criado com sucesso</value>
+    <value>{0} Criado com sucesso</value>
   </data>
   <data name="EntityNotFound" xml:space="preserve">
-    <value>{0} não encontrado com id {1}</value>
+    <value>{0} Não encontrado com id {1}</value>
   </data>
   <data name="EntityRemoved" xml:space="preserve">
     <value>{0} removido com sucesso</value>
   </data>
   <data name="EntityUpdated" xml:space="preserve">
-    <value>{0} alterado com sucesso</value>
+    <value>{0} Atualizado com sucesso</value>
   </data>
 </root>

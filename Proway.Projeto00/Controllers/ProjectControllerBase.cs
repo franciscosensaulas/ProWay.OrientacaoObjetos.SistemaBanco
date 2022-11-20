@@ -8,10 +8,10 @@ namespace Proway.Projeto00.Controllers
         public const string KeyMessageSuccess = "MensagemSucesso";
         public const string KeyMessageError = "MensagemErro";
 
-        protected void StoreExceptionMessageOnTempData(NotFoundException exception) => 
-            TempData[KeyMessageError] = exception.Message;
-
-        protected void StoreSuccessMessageOnTempData(string message) =>
+        protected void StoreExceptioMessageOnTempData(NotFoundException exception) => 
+                TempData[KeyMessageError] = exception.Message;
+        
+        protected void StoreSucessMessageOnTempData(string message) => 
             TempData[KeyMessageSuccess] = message;
     }
 }

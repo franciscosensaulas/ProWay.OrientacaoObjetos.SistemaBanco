@@ -12,5 +12,6 @@ namespace Service.ViewModels.Livros
         public decimal? Preco { get; set; }
         public int? CategoriaId { get; set; }
         public ushort? QuantidadePaginas { get; set; }
+
     }
 }

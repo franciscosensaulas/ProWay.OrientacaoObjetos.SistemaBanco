@@ -13,16 +13,15 @@ namespace Proway.Projeto00.Controllers
         }
 
         [HttpPost]
-        [Route("calcular")]
+        [Route("Calcular")]
         public IActionResult Calcular(ColaboradorFolhaPagamentoViewModel viewModel)
         {
-
             if (ModelState.IsValid == false)
             {
                 return View("Index", viewModel);
             }
 
-            var salarioLiquido = viewModel.CalcularSalarioLiquido();
+            var salarioLiquido = viewModel.CalcularSalarioliquido();
 
             return Ok($"Salário Líquido: {salarioLiquido:C2}");
         }

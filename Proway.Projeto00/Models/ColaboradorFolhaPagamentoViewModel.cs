@@ -4,51 +4,44 @@ namespace Proway.Projeto00.Models
 {
     public class ColaboradorFolhaPagamentoViewModel
     {
-        [Range(0, double.MaxValue, ErrorMessage = "Campo valor hora deve ser entre {1} e {2}")]
-        [Required(ErrorMessage = "Campo valor hora deve ser preenchido")]
-        [Display(Name = "Valor hora")]
+        [Range(0, double.MaxValue,ErrorMessage = "Campo Quantidade de horas Trabalhadas dever ser entre {1} e {2}")]
+        [Required(ErrorMessage = "Campo Valor Hora deve ser informado")]
+        [Display(Name = "Valor Hora")]
         public decimal? ValorHora { get; set; }
 
-        [Range(0, 100, ErrorMessage = "Campo quantidade horas extras deve ser entre {1} e {2}")]
-        [Required(ErrorMessage = "Campo quantidade horas extras deve ser preenchido")]
-        [Display(Name = "Quantidade horas extras")]
+        [Range(0, 100, ErrorMessage="Campo Quantidade horas extras dever ser entre {1} e {2}")]
+        [Required(ErrorMessage = "Campo Quantidade de horas Extras deve ser informado")]
+        [Display(Name = "Quantidade de horas Extras")]
         public int? QuantidadeHoraExtra { get; set; }
-
-        [Range(10, 220, ErrorMessage = "Campo horas trabalhadas deve ser entre {1} e {2}")]
-        [Required(ErrorMessage = "Campo Horas trabalhadas deve ser preenchido")]
-        [Display(Name = "Horas trabalhadas")]
+        
+        [Range(0, 220, ErrorMessage= "Campo Quantidade de horas Trabalhadas dever ser entre {1} e {2}")]
+        [Required(ErrorMessage = "Campo Quantidade de horas Trabalhadas deve ser informado")]
+        [Display(Name = "Quantidade de horas Trabalhadas")]
         public int? HorasTrabalhadas { get; set; }
 
-        [Required(ErrorMessage = "Campo Data contratação deve ser preenchido")]
-        [Display(Name = "Data contratação")]
+        [Required(ErrorMessage = "Campo Data da Contratação deve ser informado")]
+        [Display(Name = "Data da Contratação")]
         public DateTime? DataContratacao { get; set; }
 
-        [MinLength(3, ErrorMessage = "Campo nome deve conter no mínimo {1} caracteres")]
-        [MaxLength(100, ErrorMessage = "Campo nome deve conter no máximo {1} caracteres")]
-        [Required(ErrorMessage = $"Campo {nameof(Nome)} deve ser preenchido")]
-        [Display(Name = "Nome")]
-        public string? Nome { get; set; }
+        [MinLength(3, ErrorMessage= "Campo nome deve conter no mínimo {1} caracteres")]
+        [MaxLength(100, ErrorMessage= "Campo nome deve conter no maximo {1} caracteres")]
+        [Required(ErrorMessage =$"Campo {nameof(Nome)} deve ser informado")]
+        [Display(Name = nameof(Nome))]
+        public String? Nome { get; set; }
 
-        [Required(ErrorMessage = "Campo Cargo deve ser preenchido")]
-        [Display(Name = "Cargo")]
+        [Required(ErrorMessage = "Campo Cargo deve ser informado")]
+        [Display(Name = "Função")]
         public int? Cargo { get; set; }
 
-        //public decimal CalcularSalarioBruto()
-        //{
-        //    return ValorHora.GetValueOrDefault() * HorasTrabalhadas.GetValueOrDefault();
-        //}
+        public decimal CalcularSalarioBruto() => ValorHora.GetValueOrDefault() * HorasTrabalhadas.GetValueOrDefault();
 
-        // Expression method
-        public decimal CalcularSalarioBruto() =>
-            ValorHora.GetValueOrDefault() * HorasTrabalhadas.GetValueOrDefault();
-
-        public decimal CalcularSalarioLiquido()
+        public decimal CalcularSalarioliquido()
         {
             var bonus = CalcularBonus();
-            var horaExtra = CalcularHorasExtras();
+            var horasExtra = CalcularHorasExtras();
             var salarioBruto = CalcularSalarioBruto();
 
-            return bonus + horaExtra + salarioBruto;
+            return bonus + horasExtra + salarioBruto;
         }
 
         public decimal CalcularBonus()
@@ -56,8 +49,7 @@ namespace Proway.Projeto00.Models
             var salarioBruto = CalcularSalarioBruto();
 
             if (PossuiAnosCasa(10))
-                return salarioBruto * 1.2m;
-
+                return salarioBruto * 1.20m;
 
             if (PossuiAnosCasa(5))
                 return salarioBruto * 1.1m;
@@ -65,8 +57,7 @@ namespace Proway.Projeto00.Models
             return salarioBruto * 1.05m;
         }
 
-        public decimal CalcularHorasExtras() =>
-            ValorHora.GetValueOrDefault() * QuantidadeHoraExtra.GetValueOrDefault() * 1.70m;
+        public decimal CalcularHorasExtras() => ValorHora.GetValueOrDefault() * QuantidadeHoraExtra.GetValueOrDefault() * 1.70m;
 
         private bool PossuiAnosCasa(int anosCasa)
         {

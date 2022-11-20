@@ -1,10 +1,15 @@
 ﻿using Repository.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ProWayTests.Builders.Entities
+namespace ProwayTests.Builders.Entities
 {
     internal class CategoriaBuilder
     {
-        private int _id;
+        private int _Id;
         private string _nome;
         private List<Livro> _livros;
 
@@ -12,7 +17,7 @@ namespace ProWayTests.Builders.Entities
         {
             return new Categoria
             {
-                Id = _id,
+                Id = _Id,
                 Nome = _nome,
                 Livros = _livros
             };
@@ -21,21 +26,18 @@ namespace ProWayTests.Builders.Entities
         public CategoriaBuilder ComNome(string nome)
         {
             _nome = nome;
-
             return this;
         }
 
         public CategoriaBuilder ComId(int id)
         {
-            _id = id;
-
+            _Id = id;
             return this;
         }
 
         public CategoriaBuilder ComLivros(List<Livro> livros)
         {
             _livros = livros;
-
             return this;
         }
     }

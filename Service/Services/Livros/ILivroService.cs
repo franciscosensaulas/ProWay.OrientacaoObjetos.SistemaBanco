@@ -1,4 +1,5 @@
-﻿using Service.ViewModels.Livros;
+﻿using Repository.Repositories.Livros;
+using Service.ViewModels.Livros;
 
 namespace Service.Services.Livros
 {

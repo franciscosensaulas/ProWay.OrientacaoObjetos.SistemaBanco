@@ -7,11 +7,11 @@ namespace Service.Services.Categorias
 {
     public class CategoriaService : ICategoriaService
     {
-        private readonly ICategoriaRepository _categoriaRepository;
+        private readonly ICategoriaRepositorio _categoriaRepository;
 
-        public CategoriaService(ICategoriaRepository categoriaRepository)
+        public CategoriaService(ICategoriaRepositorio categoriaRepositorio)
         {
-            _categoriaRepository = categoriaRepository;
+            _categoriaRepository = categoriaRepositorio;
         }
 
         public void Alterar(CategoriaEditarViewModel viewModel)
@@ -19,7 +19,7 @@ namespace Service.Services.Categorias
             var categoria = _categoriaRepository.GetById(viewModel.Id);
 
             if (categoria == null)
-                return;
+                throw new NotFoundException("categoria", viewModel.Id);
 
             categoria.Nome = viewModel.Nome.Trim();
 
@@ -31,8 +31,8 @@ namespace Service.Services.Categorias
             var categoria = _categoriaRepository.GetById(id);
 
             if (categoria == null)
-                    throw new NotFoundException("categoria", id);
-
+                throw new NotFoundException("categoria", id);
+                    
             _categoriaRepository.Remove(categoria);
         }
 
@@ -69,15 +69,13 @@ namespace Service.Services.Categorias
         {
             var categorias = _categoriaRepository.GetAll();
 
-            var categoriaIndexViewModels = categorias
-                .Select(x => new CategoriaIndexViewModel
-                {
-                    Id = x.Id,
-                    Nome = x.Nome
-                })
-                .ToList();
-
-            return categoriaIndexViewModels;
+            var categoriasIndexViewModels = categorias.Select(x => new CategoriaIndexViewModel
+            {
+                Id = x.Id,
+                Nome = x.Nome
+            }).ToList();
+            
+            return categoriasIndexViewModels;
         }
     }
 }

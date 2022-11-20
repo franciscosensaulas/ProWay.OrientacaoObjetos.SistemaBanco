@@ -1,6 +1,11 @@
 ﻿using Service.ViewModels.Categorias;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ProWayTests.Builders.ViewModels.Categorias
+namespace ProwayTests.Builders.ViewModels.Categorias
 {
     internal class CategoriaCadastrarViewModelBuilder
     {
@@ -17,7 +22,6 @@ namespace ProWayTests.Builders.ViewModels.Categorias
         public CategoriaCadastrarViewModelBuilder ComNome(string nome)
         {
             _nome = nome;
-
             return this;
         }
     }

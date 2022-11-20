@@ -3,7 +3,7 @@
     public enum ColaboradorCargo
     {
         Estagiario,
-        Junior, 
+        Junior,
         Pleno,
         Senior
     }

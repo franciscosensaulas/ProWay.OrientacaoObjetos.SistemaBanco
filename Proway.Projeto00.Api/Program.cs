@@ -1,5 +1,6 @@
-using Repository.DependecyInjection;
-using Service.DependecyInjection;
+using Proway.Projeto00.API.Middlewares;
+using Repository.DependencyInjection;
+using Service.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-    .AddSqlServerDatabase()
-    .AddRepository()
+    .AddAutoMapper()
+    .AddSqlServerDataBase()
+    .AddRespository()
     .AddService();
 
 var app = builder.Build();
@@ -27,6 +29,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapControllers();
 

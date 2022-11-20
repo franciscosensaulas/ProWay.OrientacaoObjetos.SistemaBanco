@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Repository.Entities;
 using Service.Services.Categorias;
 using Service.ViewModels.Categorias;
 
@@ -8,7 +9,6 @@ namespace Proway.Projeto00.Controllers
     public class CategoriaController : ProjectControllerBase
     {
         private readonly ICategoriaService _categoriaService;
-
         public CategoriaController(ICategoriaService categoriaService)
         {
             _categoriaService = categoriaService;
@@ -17,12 +17,10 @@ namespace Proway.Projeto00.Controllers
         [HttpGet]
         public IActionResult ObterTodos()
         {
-            // Select no banco de dados buscando
-            // da tabela de categorias todos os registros
-            var categoriaIndexViewModels = _categoriaService.ObterTodos();
+            //Select no banco de dados buscando todos os registros
+            var categoriasIndexViewModel = _categoriaService.ObterTodos();
 
-
-            return View("Index", categoriaIndexViewModels);
+            return View("Index", categoriasIndexViewModel);
         }
 
         [HttpGet("cadastrar")]
@@ -36,12 +34,14 @@ namespace Proway.Projeto00.Controllers
         [HttpPost("cadastrar")]
         public IActionResult Cadastrar(CategoriaCadastrarViewModel viewModel)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
+            {
                 return View(viewModel);
+            }
 
             var _ = _categoriaService.Cadastrar(viewModel);
 
-            StoreSuccessMessageOnTempData("Categoria Cadastrada com sucesso");
+            StoreSucessMessageOnTempData($"Categoria {viewModel.Nome} cadastrada com Sucesso");
 
             return RedirectToAction("ObterTodos");
         }
@@ -51,7 +51,7 @@ namespace Proway.Projeto00.Controllers
         {
             _categoriaService.Apagar(id);
 
-            StoreSuccessMessageOnTempData("Categoria apagada com sucesso");
+            StoreSucessMessageOnTempData("Categoria Apagada com Sucesso!");
 
             return RedirectToAction("ObterTodos");
         }
@@ -61,7 +61,7 @@ namespace Proway.Projeto00.Controllers
         {
             var categoriaIndexViewModel = _categoriaService.ObterPorId(id);
 
-            if (categoriaIndexViewModel == null)
+            if(categoriaIndexViewModel == null)
             {
                 return RedirectToAction("ObterTodos");
             }
@@ -81,12 +81,14 @@ namespace Proway.Projeto00.Controllers
             var categoriaExistente = _categoriaService.ObterPorId(id);
 
             if (categoriaExistente == null)
+            {
                 return RedirectToAction("ObterTodos");
+            }
 
-            categoriaEditarViewModel.Id = id;
+            StoreSucessMessageOnTempData("Categoria Alterada com Sucesso!");
+
+            categoriaEditarViewModel.Id = categoriaExistente.Id;
             _categoriaService.Alterar(categoriaEditarViewModel);
-
-            StoreSuccessMessageOnTempData("Categoria alterada com sucesso");
 
             return RedirectToAction("ObterTodos");
         }

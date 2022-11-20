@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Repository.Database;
-using Repository.DependecyInjection;
+using Repository.DependencyInjection;
 using Repository.Repositories.Categorias;
 using Repository.Repositories.Livros;
-using Service.DependecyInjection;
+using Service.DependencyInjection;
 using Service.Services.Categorias;
 using Service.Services.Livros;
 using System.Globalization;
@@ -15,9 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services
-    .AddSqlServerDatabase()
-    .AddRepository()
-    .AddService();
+    .AddAutoMapper()
+    .AddSqlServerDataBase()
+    .AddRespository()
+    .AddService();    
 
 var app = builder.Build();
 
@@ -28,7 +29,6 @@ app.UseRequestLocalization(new RequestLocalizationOptions
     SupportedCultures = supportedCultures,
     SupportedUICultures = supportedCultures
 });
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

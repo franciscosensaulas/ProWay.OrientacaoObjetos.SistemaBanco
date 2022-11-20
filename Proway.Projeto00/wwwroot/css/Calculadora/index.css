@@ -8,7 +8,7 @@
     margin-bottom: 10px;
 }
 @font-face {
-    font-family: "Ninja Naruto";
+    font-family: 'Ninja Naruto';
     src: URL("/fonts/njnaruto.ttf") format('truetype');
 }
 

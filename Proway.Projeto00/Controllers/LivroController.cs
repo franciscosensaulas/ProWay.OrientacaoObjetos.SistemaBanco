@@ -1,5 +1,6 @@
 ﻿using Globalization.Resources;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Repositories.Livros;
 using Service.Exceptions;
 using Service.Extensions;
 using Service.Services.Categorias;
@@ -13,9 +14,8 @@ namespace Proway.Projeto00.Controllers
     {
         private readonly ILivroService _livroService;
         private readonly ICategoriaService _categoriaService;
-
-        public LivroController(
-            ILivroService livroService,
+        public LivroController(ILivroService livroService, 
+            ILivroRepository livroRepository,
             ICategoriaService categoriaService)
         {
             _livroService = livroService;
@@ -30,7 +30,7 @@ namespace Proway.Projeto00.Controllers
             return View(livros);
         }
 
-        [HttpGet("cadastrar")]
+        [HttpGet("Cadastrar")]
         public IActionResult Cadastrar()
         {
             var livroCadastrarViewModel = new LivroCadastrarViewModel();
@@ -42,66 +42,70 @@ namespace Proway.Projeto00.Controllers
             return View(livroCadastrarViewModel);
         }
 
-        [HttpPost("cadastrar")]
+        [HttpPost("Cadastrar")]
         public IActionResult Cadastrar(LivroCadastrarViewModel viewModel)
         {
-            var livroIndeViewModel = _livroService.Cadastrar(viewModel);
+            var livroCadastrarViewModel = _livroService.Cadastrar(viewModel);
 
-            StoreSuccessMessageOnTempData(Resource.EntityCreated.Format($"Livro '{viewModel.Titulo}'"));
+            StoreSucessMessageOnTempData(Resource.EntityCreated.Format("Livro"));
 
-            return RedirectToAction("Editar", new {id = livroIndeViewModel.Id});
+            return RedirectToAction("Editar", new {id = livroCadastrarViewModel.Id});
         }
 
-        [HttpGet("apagar/{id}")]
+        [HttpGet("Apagar/{id}")]
         public IActionResult Apagar(int id)
         {
             try
             {
                 _livroService.Apagar(id);
 
-                StoreSuccessMessageOnTempData(Resource.EntityRemoved.Format("Livro"));
+                StoreSucessMessageOnTempData(Resource.EntityRemoved.Format("Livro"));
+
             }
-            catch (NotFoundException e)
+            catch (NotFoundException ex)
             {
-                StoreExceptionMessageOnTempData(e);
+                StoreExceptioMessageOnTempData(ex);
             }
 
             return RedirectToAction("Index");
         }
 
-        [HttpGet("editar/{id}")]
+        [HttpGet("Editar/{id}")]
         public IActionResult Editar(int id)
-         {
+        {
             try
             {
                 var livroEditarViewModel = _livroService.ObterPorId(id);
 
                 var categorias = _categoriaService.ObterTodos();
+
                 ViewBag.Categorias = categorias;
+
 
                 return View(livroEditarViewModel);
             }
-            catch (NotFoundException e)
+            catch (NotFoundException ex)
             {
-                StoreExceptionMessageOnTempData(e);
-
-                return RedirectToAction("Index");
+                StoreExceptioMessageOnTempData(ex);
             }
+
+            return RedirectToAction("Index");
         }
 
-        [HttpPost("editar/{id}")]
+        [HttpPost("Editar/{id}")]
         public IActionResult Editar(int id, LivroEditarViewModel viewModel)
         {
-            try
-            {
-                viewModel.Id = id;
+            viewModel.Id = id;
+            try 
+            { 
                 _livroService.Editar(viewModel);
 
-                StoreSuccessMessageOnTempData(Resource.EntityUpdated.Format("Livro"));
+                StoreSucessMessageOnTempData(Resource.EntityUpdated.Format("Livro"));
+
             }
-            catch (NotFoundException e)
+            catch (NotFoundException ex)
             {
-                StoreExceptionMessageOnTempData(e);
+                StoreExceptioMessageOnTempData(ex);
             }
 
             return RedirectToAction("Index");

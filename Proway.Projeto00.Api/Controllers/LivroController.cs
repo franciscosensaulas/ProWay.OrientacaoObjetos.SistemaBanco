@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Globalization.Resources;
+using Microsoft.AspNetCore.Mvc;
 using Service.Exceptions;
+using Service.Extensions;
+using Service.Services.Categorias;
 using Service.Services.Livros;
 using Service.ViewModels.Livros;
 
-namespace Proway.Projeto00.Controllers
+namespace Proway.Projeto00.API.Controllers
 {
     [Route("livros")]
-    public class LivroController : ControllerBase
+    public class LivroController : ProjectApiControllerBase
     {
         private readonly ILivroService _livroService;
-
         public LivroController(ILivroService livroService)
         {
             _livroService = livroService;
@@ -26,53 +28,35 @@ namespace Proway.Projeto00.Controllers
         [HttpGet("{id}")]
         public IActionResult ObterPorId(int id)
         {
-            try
-            {
-                var livro = _livroService.ObterPorId(id);
-                return Ok(livro);
-            }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
+            var livro = _livroService.ObterPorId(id);
+            return Ok(livro);
         }
 
-        [HttpPost()]
+        [HttpPost("")]
         public IActionResult Cadastrar([FromBody] LivroCadastrarViewModel viewModel)
         {
-            var livroIndeViewModel = _livroService.Cadastrar(viewModel);
+            var livroCadastrarViewModel = _livroService.Cadastrar(viewModel);
 
-            return CreatedAtAction("Livro", new {id = livroIndeViewModel.Id}, livroIndeViewModel);
+            return CreatedAtAction("ObterPorId",
+                new { id = livroCadastrarViewModel.Id }, livroCadastrarViewModel);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Apagar(int id)
         {
-            try
-            {
-                _livroService.Apagar(id);
-                return Ok();
-            }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
+            _livroService.Apagar(id);
+
+            return Ok();
         }
 
         [HttpPut("{id}")]
         public IActionResult Editar(int id, [FromBody] LivroEditarViewModel viewModel)
         {
-            try
-            {
-                viewModel.Id = id;
-                _livroService.Editar(viewModel);
+            viewModel.Id = id;
 
-                return Ok(); // 200
-            }
-            catch (NotFoundException)
-            {
-                return NotFound(); // 404
-            }
+            _livroService.Editar(viewModel);
+
+            return Ok();
         }
     }
 }

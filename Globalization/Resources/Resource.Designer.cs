@@ -95,5 +95,32 @@ namespace Globalization.Resources {
                 return ResourceManager.GetString("EntityUpdated", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has max length {1}.
+        /// </summary>
+        public static string FieldMaxLength {
+            get {
+                return ResourceManager.GetString("FieldMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has min length {1}.
+        /// </summary>
+        public static string FieldMinLength {
+            get {
+                return ResourceManager.GetString("FieldMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} not null.
+        /// </summary>
+        public static string FieldNotNull {
+            get {
+                return ResourceManager.GetString("FieldNotNull", resourceCulture);
+            }
+        }
     }
 }

@@ -1,12 +1,6 @@
 using Microsoft.AspNetCore.Localization;
-using Microsoft.EntityFrameworkCore;
-using Repository.Database;
 using Repository.DependencyInjection;
-using Repository.Repositories.Categorias;
-using Repository.Repositories.Livros;
 using Service.DependencyInjection;
-using Service.Services.Categorias;
-using Service.Services.Livros;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services
     .AddAutoMapper()
-    .AddSqlServerDataBase()
+    .AddSqlServerDataBase(builder.Configuration)
     .AddRespository()
     .AddService();    
 

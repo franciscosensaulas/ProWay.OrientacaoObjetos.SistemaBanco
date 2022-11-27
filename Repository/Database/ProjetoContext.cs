@@ -7,7 +7,8 @@ namespace Repository.Database
     {
         public ProjetoContext(DbContextOptions options) : base(options)
         {
-
+            // dotnet ef migrations add AdicionarUsuarioTabela --project Repository --startup-project Proway.Projeto00
+            // dotnet ef database update --project Repository --startup-project Proway.Projeto00
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -15,6 +16,7 @@ namespace Repository.Database
             //Registrar o mapeamento das tabelas com suas colunas e propriedade da entidade
             modelBuilder.ApplyConfiguration(new CategoriaMapeamento());
             modelBuilder.ApplyConfiguration(new LivroMapeamento());
+            modelBuilder.ApplyConfiguration(new LoginMapeamento());
         }
     }
 }

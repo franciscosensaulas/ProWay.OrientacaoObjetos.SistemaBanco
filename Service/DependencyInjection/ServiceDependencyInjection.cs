@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using Repository.Database;
-using Repository.Repositories.Categorias;
-using Repository.Repositories.Livros;
 using Service.Services.Categorias;
 using Service.Services.Livros;
+using Service.Services.Usuarios;
+using Service.Validations;
+using Service.ViewModels.Usuarios;
 
 namespace Service.DependencyInjection
 {
@@ -14,6 +14,14 @@ namespace Service.DependencyInjection
         {
             services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddScoped<ILivroService, LivrosService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddFluentValidationProjeto(this IServiceCollection services)
+        {
+            services.AddScoped<IValidator<UsuarioViewModel>, UsuarioViewModelValidation>();
 
             return services;
         }

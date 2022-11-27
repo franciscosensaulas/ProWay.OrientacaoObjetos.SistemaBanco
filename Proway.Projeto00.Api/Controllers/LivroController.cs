@@ -1,14 +1,12 @@
-﻿using Globalization.Resources;
-using Microsoft.AspNetCore.Mvc;
-using Service.Exceptions;
-using Service.Extensions;
-using Service.Services.Categorias;
+﻿using Microsoft.AspNetCore.Mvc;
+using Proway.Projeto00.API.Filters;
 using Service.Services.Livros;
 using Service.ViewModels.Livros;
 
 namespace Proway.Projeto00.API.Controllers
 {
     [Route("livros")]
+    [ServiceFilter(typeof(AuthenticatedFilter))]
     public class LivroController : ProjectApiControllerBase
     {
         private readonly ILivroService _livroService;

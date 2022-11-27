@@ -19,6 +19,12 @@ namespace ProwayTests.Integrations
 
             _client = _testServer.CreateClient();
             _context = _testServer.Services.GetService<ProjetoContext>();
+
+            _context.Database.EnsureDeleted();
+            _context.Database.Migrate();
+
+            //_context.Set<Categoria>().RemoveRange(_context.Set<Categoria>().ToList());
+            //_context.Set<Livro>().RemoveRange(_context.Set<Livro>().ToList());
         }
 
         public void CreateEntity<TEntity>(params TEntity[] entities)
@@ -51,8 +57,8 @@ namespace ProwayTests.Integrations
         {
             services.AddControllers();
 
+            //services.AddDbContext<ProjetoContext>(x => x.UseSqlServer("Server=(LocalDB)\\MSSQLLocalDB;Database=ProjetoProwayTestsIntegrations"));
             services.AddDbContext<ProjetoContext>(x => x.UseInMemoryDatabase("ProjetoProwayBancoMemoria"));
-
             services
                 .AddRespository()
                 .AddService();

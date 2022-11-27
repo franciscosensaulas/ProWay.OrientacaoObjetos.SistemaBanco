@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repository.Database;
 using Repository.Repositories.Categorias;
 using Repository.Repositories.Livros;
+using Repository.Repositories.Usuario;
 
 namespace Repository.DependencyInjection
 {
@@ -12,14 +14,17 @@ namespace Repository.DependencyInjection
         {
             services
             .AddScoped<ICategoriaRepositorio, CategoriaRepositorio>()
-            .AddScoped<ILivroRepository, LivroRepository>();
+            .AddScoped<ILivroRepository, LivroRepository>()
+            .AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             return services;
         }
 
-        public static IServiceCollection AddSqlServerDataBase(this IServiceCollection services)
+        public static IServiceCollection AddSqlServerDataBase(this IServiceCollection services,
+            IConfiguration configuration)
         {
-            var connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Moc\Desktop\Proway.Projeto00\Proway.Projeto00\Database\BancoDados.mdf;Integrated Security=True";
+            // ConnectionStrings de exemplo: https://www.connectionstrings.com/sql-server/
+            var connectionString = configuration.GetConnectionString("SqlServer");
 
             services.AddDbContext<ProjetoContext>(options => options.UseSqlServer(connectionString));
 

@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using NLog.Extensions.Logging;
+using Proway.Projeto00.API.Filters;
 using Proway.Projeto00.API.Middlewares;
+using Repository.Database;
 using Repository.DependencyInjection;
 using Service.DependencyInjection;
 
@@ -11,9 +15,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Host.ConfigureLogging(x =>
+//{
+//    x.ClearProviders();
+//    x.AddNLog();
+//});
+
+
 builder.Services
+    .AddScoped<AuthenticatedFilter>()
+    .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
+    .AddProjectSession()
     .AddAutoMapper()
-    .AddSqlServerDataBase()
+    .AddFluentValidationProjeto()
+    .AddSqlServerDataBase(builder.Configuration)
     .AddRespository()
     .AddService();
 
@@ -33,5 +48,14 @@ app.UseAuthorization();
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapControllers();
+
+
+using (var scopo = app.Services.CreateScope())
+{
+    var contexto = scopo.ServiceProvider.GetService<ProjetoContext>();
+    contexto.Database.Migrate();
+}
+
+app.UseSession();
 
 app.Run();

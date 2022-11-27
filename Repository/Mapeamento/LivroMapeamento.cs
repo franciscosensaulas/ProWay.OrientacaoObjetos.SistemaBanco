@@ -9,6 +9,7 @@ namespace Repository.Mapeamento
         private int id = 0;
         public void Configure(EntityTypeBuilder<Livro> builder)
         {
+            
             builder.ToTable("livro");
 
             builder.HasKey(x => x.Id);

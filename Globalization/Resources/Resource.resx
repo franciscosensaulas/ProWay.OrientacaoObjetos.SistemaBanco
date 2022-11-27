@@ -129,4 +129,13 @@
   <data name="EntityUpdated" xml:space="preserve">
     <value>{0} Updated sucessfully</value>
   </data>
+  <data name="FieldMaxLength" xml:space="preserve">
+    <value>{0} has max length {1}</value>
+  </data>
+  <data name="FieldMinLength" xml:space="preserve">
+    <value>{0} has min length {1}</value>
+  </data>
+  <data name="FieldNotNull" xml:space="preserve">
+    <value>{0} not null</value>
+  </data>
 </root>

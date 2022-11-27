@@ -101,7 +101,7 @@ namespace ProwayTests.Units.Service.Services.Categorias
             //Assert
 
             action.Should().ThrowExactly<NotFoundException>()
-               .WithMessage("categoria Não encontrado com id 10");
+               .WithMessage("categoria not found with 10");
 
             _categoriaRepository.Received(1)
                 .GetById(Arg.Is(10));
@@ -157,7 +157,7 @@ namespace ProwayTests.Units.Service.Services.Categorias
             //Assert
 
             action.Should().ThrowExactly<NotFoundException>()
-                .WithMessage("categoria Não encontrado com id 3");
+                .WithMessage("categoria not found with 3");
 
             _categoriaRepository.Received(1)
                 .GetById(Arg.Is(3));
